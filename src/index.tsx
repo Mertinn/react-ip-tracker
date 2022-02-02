@@ -11,6 +11,12 @@ const GlobalStyle = createGlobalStyle`
       box-sizing: border-box;
       font-family: 'Rubik', sans-serif;
     }
+    svg {
+      display: block;
+    }
+    ul {
+      list-style-type: none;
+    }
 `;
 
 ReactDOM.render(
