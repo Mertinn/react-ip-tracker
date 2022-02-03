@@ -4,6 +4,9 @@ import SearchInput from "../SearchInput";
 import DataCard from "../DataCard";
 import axios from "axios";
 import { IHeader } from "../DataCard/CardHeader";
+import { OpenStreetMapProvider } from "leaflet-geosearch";
+import { SearchResult } from "leaflet-geosearch/lib/providers/provider";
+import { useMap } from "../../contexts/map";
 
 const apiKey = process.env.REACT_APP_API_KEY!;
 const ipDataRequestUrl = (ip: string, apiKey: string) =>
@@ -28,7 +31,11 @@ const MainPanel = () => {
     { title: "ISP", text: "No data" },
   ]);
 
+  const { map, setMarkers } = useMap();
+
   useEffect(() => {
+    if (!map) return;
+
     (async () => {
       const ip: { data: { ip: string } } = await axios.get(getIpRequestUrl);
       const { data }: { data: IPData } = await axios.get(
@@ -45,8 +52,16 @@ const MainPanel = () => {
         { title: "ISP", text: data.isp },
       ];
       setHeaders(newHeaders);
+
+      const provider = new OpenStreetMapProvider();
+      const results: SearchResult[] = await provider.search({
+        query: data.location.region,
+      });
+      const result = results[0];
+      map.setView([result.y, result.x], 7);
+      setMarkers([{ position: [result.y, result.x] }]);
     })();
-  }, []);
+  }, [map, setMarkers]);
 
   return (
     <MainPanelContainer>
