@@ -1,12 +1,12 @@
 import React from "react";
 import { Title, Text, CardHeaderContainer } from "./styles";
 
-interface IProps {
+export interface IHeader {
   title: string;
   text: string;
 }
 
-const CardHeader = ({ text, title }: IProps) => {
+const CardHeader = ({ text, title }: IHeader) => {
   return (
     <CardHeaderContainer>
       <Title>{title}</Title>

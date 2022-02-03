@@ -10,8 +10,8 @@ const DataCard = ({ headers }: IProps) => {
   return (
     <CardContainer>
       <StyledList>
-        {headers.map((header) => (
-          <li>
+        {headers.map((header, index) => (
+          <li key={index}>
             <CardHeader title={header.title} text={header.text} />
           </li>
         ))}

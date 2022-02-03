@@ -3,6 +3,9 @@ import bgPattern from "../../assets/pattern-bg.png";
 
 export const MainPanelContainer = styled.div`
   background: url(${bgPattern});
+  background-size: 300%;
+  background-position-x: 70%;
+
   color: white;
   display: flex;
   justify-content: center;
