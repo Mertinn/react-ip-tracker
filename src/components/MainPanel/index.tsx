@@ -38,36 +38,44 @@ const MainPanel = () => {
 
     (async () => {
       const ip: { data: { ip: string } } = await axios.get(getIpRequestUrl);
-      const { data }: { data: IPData } = await axios.get(
-        ipDataRequestUrl(ip.data.ip, apiKey)
-      );
-
-      const newHeaders: IHeader[] = [
-        { title: "IP Address", text: data.ip },
-        {
-          title: "Location",
-          text: `${data.location.region} ${data.location.country}`,
-        },
-        { title: "Timezone", text: `UTC ${data.location.timezone}` },
-        { title: "ISP", text: data.isp },
-      ];
-      setHeaders(newHeaders);
-
-      const provider = new OpenStreetMapProvider();
-      const results: SearchResult[] = await provider.search({
-        query: data.location.region,
-      });
-      const result = results[0];
-      map.setView([result.y, result.x], 7);
-      setMarkers([{ position: [result.y, result.x] }]);
+      await handleSearch(ip.data.ip);
     })();
   }, [map, setMarkers]);
+
+  const handleSearch = async (ip: string) => {
+    if (!map) return;
+
+    const { data }: { data: IPData } = await axios.get(
+      ipDataRequestUrl(ip, apiKey)
+    );
+
+    const newHeaders: IHeader[] = [
+      { title: "IP Address", text: data.ip },
+      {
+        title: "Location",
+        text: `${data.location.region} ${data.location.country}`,
+      },
+      { title: "Timezone", text: `UTC ${data.location.timezone}` },
+      { title: "ISP", text: data.isp },
+    ];
+    setHeaders(newHeaders);
+
+    const provider = new OpenStreetMapProvider();
+    const results: SearchResult[] = await provider.search({
+      query: data.location.region,
+    });
+
+    const result = results[0];
+
+    map.setView([result.y, result.x], 5.4);
+    setMarkers([{ position: [result.y, result.x] }]);
+  };
 
   return (
     <MainPanelContainer>
       <ContentContainer>
         <Header>IP Address Tracker</Header>
-        <SearchInput onSearch={(value) => console.log(value)} />
+        <SearchInput onSearch={(value) => handleSearch(value)} />
         <DataCard headers={headers} />
       </ContentContainer>
     </MainPanelContainer>

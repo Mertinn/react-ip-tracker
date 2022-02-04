@@ -14,7 +14,7 @@ export const MainPanelContainer = styled.div`
 export const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.8rem;
   margin: 2rem 0;
   text-align: center;
   width: 89%;

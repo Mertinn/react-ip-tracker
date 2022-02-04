@@ -11,7 +11,7 @@ export const InputContainer = styled.div`
 export const Input = styled.input.attrs({ type: "text" })`
   border: none;
   outline: none;
-  padding: 0.9rem;
+  padding: 1.2rem;
   font-size: 1.2rem;
   flex-grow: 1;
 `;
@@ -21,5 +21,5 @@ export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.2rem;
+  width: 17.5%;
 `;
