@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { ContentContainer, Header, MainPanelContainer } from "./styles";
+import {
+  ContentContainer,
+  Header,
+  InputContainer,
+  MainPanelContainer,
+} from "./styles";
 import SearchInput from "../SearchInput";
 import DataCard from "../DataCard";
 import axios from "axios";
@@ -67,7 +72,7 @@ const MainPanel = () => {
 
     const result = results[0];
 
-    map.setView([result.y, result.x], 5.4);
+    map.setView([result.y, result.x], 6.4);
     setMarkers([{ position: [result.y, result.x] }]);
   };
 
@@ -75,7 +80,9 @@ const MainPanel = () => {
     <MainPanelContainer>
       <ContentContainer>
         <Header>IP Address Tracker</Header>
-        <SearchInput onSearch={(value) => handleSearch(value)} />
+        <InputContainer>
+          <SearchInput onSearch={(value) => handleSearch(value)} />
+        </InputContainer>
         <DataCard headers={headers} />
       </ContentContainer>
     </MainPanelContainer>

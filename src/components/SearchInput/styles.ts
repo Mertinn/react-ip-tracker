@@ -6,6 +6,7 @@ export const InputContainer = styled.div`
   overflow: hidden;
   text-align: left;
   display: flex;
+  width: 100%;
 `;
 
 export const Input = styled.input.attrs({ type: "text" })`
@@ -21,5 +22,5 @@ export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 17.5%;
+  padding: 1.5rem 1.7rem;
 `;
