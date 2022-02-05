@@ -19,8 +19,13 @@ export const Input = styled.input.attrs({ type: "text" })`
 
 export const ButtonContainer = styled.div`
   background: black;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem 1.7rem;
+
+  &:hover {
+    background: ${v.moreDarkGrey};
+  }
 `;

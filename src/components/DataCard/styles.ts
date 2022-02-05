@@ -6,7 +6,7 @@ export const CardContainer = styled.div`
   padding: 2rem 1rem;
   background: white;
   color: black;
-  margin-bottom: -50px;
+  margin-bottom: -150px;
   width: 100%;
 `;
 
@@ -23,8 +23,20 @@ export const StyledList = styled.ul`
     li {
       width: 25%;
     }
+
     li:not(:last-child) {
-      border-right: 1px solid ${v.darkGrey};
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        height: 70%;
+        width: 1px;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: ${v.darkGrey};
+        opacity: 0.5;
+      }
     }
   }
 `;

@@ -4,7 +4,12 @@ import v from "../../variables";
 export const CardHeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.5rem;
+
+  @media (min-width: ${v.desktopWidth}) {
+    text-align: left;
+    padding: 0 2rem;
+  }
 `;
 
 export const Title = styled.p`
