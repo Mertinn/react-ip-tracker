@@ -14,7 +14,7 @@ export const Input = styled.input.attrs({ type: "text" })`
   outline: none;
   padding: 1.2rem;
   font-size: 1.2rem;
-  flex-grow: 1;
+  width: 100%;
 `;
 
 export const ButtonContainer = styled.div`
