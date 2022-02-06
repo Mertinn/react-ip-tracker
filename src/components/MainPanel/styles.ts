@@ -20,9 +20,9 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1.8rem;
-  margin-top: 2rem;
   text-align: center;
   width: 89%;
+  transform: translateY(10%);
 `;
 
 export const Header = styled.h1`
