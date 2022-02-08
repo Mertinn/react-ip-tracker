@@ -22,7 +22,8 @@ export const ContentContainer = styled.div`
   gap: 1.8rem;
   text-align: center;
   width: 89%;
-  transform: translateY(10%);
+  margin-top: 2rem;
+  margin-bottom: -3em;
 `;
 
 export const Header = styled.h1`
